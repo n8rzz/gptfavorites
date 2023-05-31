@@ -1,0 +1,22 @@
+{
+  "name": "GPTFavorites",
+  "version": "1.0",
+  "description": "Favorite Chat Conversations and Questions",
+  "manifest_version": 3,
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "permissions": ["tabs", "activeTab", "identity"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [{
+    "matches": ["*://*.openai.com/*"],
+    "js": ["content.js"],
+    "run_at": "document_idle",
+    "all_frames": false
+  }]
+}
